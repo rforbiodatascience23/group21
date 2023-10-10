@@ -1,0 +1,9 @@
+---
+title: "Group document"
+format:
+  html:
+    embed-resources: true
+editor: visual
+---
+
+
