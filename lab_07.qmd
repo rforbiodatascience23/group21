@@ -11,10 +11,13 @@ editor: visual
 ```{r}
 library("tidyverse")
 library("broom")
+library("patchwork")
 ```
 
 ### Loading the data
 
 ```{r}
+#| error: false
+#| warning: false
 biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 ```
