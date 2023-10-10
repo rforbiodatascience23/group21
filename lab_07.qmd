@@ -14,7 +14,7 @@ library("broom")
 library("patchwork")
 ```
 
-### Loading Data
+### Load Data
 
 ```{r}
 #| error: false
