@@ -12,8 +12,7 @@ editor: visual
 packages <- c("tidyverse","ggrepel","broom","patchwork")
 
 for (pck in packages) {
-    library(pck, character.only = TRUE)
-  }
+    library(pck, character.only = TRUE)}
 ```
 
 ## Aim
@@ -29,6 +28,8 @@ biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 ```
 
 ## Data Analysis
+
+#### Exploring the relationship between clump thickness and cancer outcomes.
 
 ```{r}
 #| error: false
@@ -49,6 +50,8 @@ biopsy |>
   theme(legend.position = "")
 ```
 
+#### Exploring the relationship between uniform cell size and uniform cell shape in cancer patients.
+
 ```{r}
 #| error: false
 #| warning: false
@@ -67,6 +70,8 @@ biopsy |>
        y = "Uniform Cell Shape")
 ```
 
+#### Exploring the relationship between uniform cell size and rate of mitosis in cancer patients.
+
 ```{r}
 #| error: false
 #| warning: false
@@ -84,6 +89,8 @@ biopsy |>
        x = "Uniform Cell Size",
        y = "Mitoses")
 ```
+
+#### Conducting Principal Component Analysis (PCA) to determine the effect of each variable on the outcome.
 
 ```{r}
 #| error: false
@@ -110,6 +117,8 @@ pca_fit |>
        y = "PC2",
        color = "Cancer")
 ```
+
+#### Plotting a rotation matrix to determine the variance of the variables and the relationship between them.
 
 ```{r}
 pca_fit |> 
@@ -145,8 +154,10 @@ pca_fit |>
   xlim(-1.25, .5) + 
   coord_fixed() + 
   theme_bw() + 
-  labs(title = "Rotation Natrix of PC2 vs PC1")
+  labs(title = "Rotation Matrix of PC2 vs PC1")
 ```
+
+#### Showing the effect of each variable on the outcome.
 
 ```{r}
 pca_fit |>
@@ -162,6 +173,4 @@ pca_fit |>
   labs(title = "Variance Explained by Each PC")
 ```
 
-```{r}
-#Nyt felt
-```
+## Conclusion
