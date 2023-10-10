@@ -9,11 +9,17 @@ editor: visual
 ## Load Libraries
 
 ```{r}
-library("tidyverse")
-library("ggrepel")
-library("broom")
-library("patchwork")
+
+packages <- c("tidyverse","ggrepel","broom","patchwork")
+
+for (pck in packages) {
+    library(pck, character.only = TRUE)
+  }
 ```
+
+## Aim
+
+This report aims to analyze biopsy data, using Principal Component Analysis (PCA). The data is derived from the MASS package, a breast cancer dataset assessing biopsies of breast tumors for 699 patients. Nine attributes were scored on a scale from 1 to 10. Whether the cancer was determined to be benign or malignant is also known.
 
 ## Load Data
 
@@ -83,13 +89,12 @@ pca_fit |>
     max.overlaps = 100,
     size = 3
   ) +
-  xlim(-1.25, .5) + ylim(-.5, 1) +
+  xlim(-1.25, .5) + 
+  ylim(-.5, 1) +
   coord_fixed() + 
   theme_bw() + 
   labs(title = "Rotation matrix of PC2 vs PC1")
 ```
-<<<<<<< HEAD
-=======
 
 ```{r}
 pca_fit |>
@@ -108,4 +113,3 @@ pca_fit |>
 ```{r}
 #Nyt felt
 ```
->>>>>>> 52a026304f9f02b6b5c1548f0e0852f140a1d419
