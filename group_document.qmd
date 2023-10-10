@@ -6,12 +6,12 @@ format:
 editor: visual
 ---
 
-#### Tobias
+#### Tobias (s215105)
 
 #### Othilia (s223163)
 
-#### Joanna
+#### Joanna (s215092)
 
-#### Bunia
+#### Bunia (s215085)
 
 #### Emma (s215090)
