@@ -46,7 +46,8 @@ biopsy |>
        subtitle = "Stratified by outcome",
        fill = "Outcome",
        x = "Clump Thickness",
-       y = "n")
+       y = "n") +
+  theme(legend.position = "")
 ```
 
 ```{r}
