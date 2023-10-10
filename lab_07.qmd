@@ -87,4 +87,3 @@ pca_fit |>
   theme_bw() + 
   labs(title = "Rotation matrix of PC2 vs PC1")
 ```
-
