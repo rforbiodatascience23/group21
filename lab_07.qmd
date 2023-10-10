@@ -74,7 +74,8 @@ pca_fit |>
   ggplot(aes(PC1, PC2)) +
   geom_segment(xend = 0,
                yend = 0,
-               arrow = arrow_style) +
+               arrow = arrow_style,
+               alpha = 0.5) +
   geom_text_repel(
     aes(label = column),
     hjust = 1, nudge_x = -0.02, 
@@ -87,4 +88,3 @@ pca_fit |>
   theme_bw() + 
   labs(title = "Rotation matrix of PC2 vs PC1")
 ```
-
