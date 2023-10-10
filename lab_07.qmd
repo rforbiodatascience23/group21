@@ -43,7 +43,7 @@ pca_fit |>
   augment(biopsy) |> # add original dataset back in
   ggplot(aes(x = .fittedPC1, 
              y = .fittedPC2, 
-             color = outcome)) + 
+             color = cancer)) + 
   geom_point(size = 1.5) +
   scale_color_manual(
     values = c(malignant = "#D55E00", 
@@ -54,7 +54,7 @@ pca_fit |>
        subtitle = "Stratified via outcome",
        x = "PC1",
        y = "PC2",
-       color = "Outcome")
+       color = "Cancer")
 
 ```
 
@@ -90,7 +90,6 @@ pca_fit |>
     size = 3
   ) +
   xlim(-1.25, .5) + 
-  ylim(-.5, 1) +
   coord_fixed() + 
   theme_bw() + 
   labs(title = "Rotation matrix of PC2 vs PC1")
