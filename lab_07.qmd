@@ -93,6 +93,8 @@ biopsy |>
        y = "Mitoses")
 ```
 
+In our analysis, we noticed a notable disparity in the rate of mitosis between malignant and benign cancer cases. The malignant cases showcase a higher median and exhibit prominent outliers, indicating a heightened rate of mitosis. Additionally, the interquartile range for malignant cases is wider, illustrating a greater dispersion compared to benign cases. On the other hand, the boxplot for benign cancer displays more defined upper and lower boundaries, emphasizing a comparatively lower and tightly clustered mitosis rate.
+
 #### Conducting Principal Component Analysis (PCA) to determine the effect of each variable on the outcome.
 
 ```{r}
