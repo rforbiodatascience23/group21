@@ -73,6 +73,8 @@ biopsy |>
        y = "Uniform Cell Shape")
 ```
 
+From the plot there is a noticeable division in both cell size and cell shape of the benign and malignant cells. A larger cluster of benign cells, with a few outliers, can be found at lower values of both cell size and shape, indicating that benign cell are generally more conserved in shape and size. On the contrary, the range of shape and size for malignant cells is much greater considering that we both observe malignant cells closer to the shape and size of benign cells and others almost four times that. This conjoins with our understanding of cancer cell types and that malignant have greater variation of both size and shape.
+
 #### Exploring the relationship between uniform cell size and rate of mitosis in cancer patients.
 
 ```{r}
