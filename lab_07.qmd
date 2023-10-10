@@ -19,7 +19,7 @@ for (pck in packages) {
 
 ## Aim
 
-This report aims to analyze biopsy data, using Principal Component Analysis (PCA) to reduce the dimensionality of the large dataset. The data is derived from the MASS package, a breast cancer dataset assessing biopsies of breast tumors for 699 patients. Nine attributes were scored on a scale from 1 to 10. Whether the cancer was determined to be benign or malignant is also known.
+This report aims to analyze biopsy data, using Principal Component Analysis (PCA) to reduce the dimensionality of the dataset. The data is derived from the MASS package, a breast cancer dataset assessing biopsies of breast tumors for 699 patients. Nine attributes were scored on a scale from 1 to 10. Whether the cancer was determined to be benign or malignant is also known.
 
 ## Load Data
 
@@ -30,6 +30,24 @@ biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 ```
 
 ## Data Analysis
+
+```{r}
+#| error: false
+#| warning: false
+biopsy |>
+  ggplot(data =_) +
+  geom_bar(mapping = aes(x = clump_thickness,
+                          fill = outcome)) +
+  facet_wrap(~outcome) +
+  scale_fill_manual(
+    values = c(malignant = "#D55E00", 
+               benign = "#0072B2")) +
+  labs(title = "Clumb Thickness of Patients",
+       subtitle = "Stratified by outcome",
+       fill = "Outcome",
+       x = "Clump Thickness",
+       y = "n")
+```
 
 ```{r}
 #| error: false
