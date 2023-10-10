@@ -145,7 +145,7 @@ pca_fit |>
   xlim(-1.25, .5) + 
   coord_fixed() + 
   theme_bw() + 
-  labs(title = "Rotation matrix of PC2 vs PC1")
+  labs(title = "Rotation Natrix of PC2 vs PC1")
 ```
 
 ```{r}
@@ -159,7 +159,7 @@ pca_fit |>
     expand = expansion(mult = c(0, 0.01))
   ) +
   theme_bw() +
-  labs(title = "Variance explained by each PC")
+  labs(title = "Variance Explained by Each PC")
 ```
 
 ```{r}
