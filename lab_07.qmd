@@ -9,7 +9,6 @@ editor: visual
 ## Load Libraries
 
 ```{r}
-
 packages <- c("tidyverse","ggrepel","broom","patchwork")
 
 for (pck in packages) {
@@ -53,6 +52,42 @@ biopsy |>
 ```{r}
 #| error: false
 #| warning: false
+biopsy |>
+  ggplot(data =_) +
+  geom_point(mapping = aes(x = uniform_cell_size,
+                          y = uniform_cell_shape,
+                          color = outcome)) +
+  scale_color_manual(
+    values = c(malignant = "#D55E00", 
+               benign = "#0072B2")) +
+  labs(title = "Cell Shape against Cell size",
+       subtitle = "Stratified by outcome",
+       color = "Outcome",
+       x = "Uniform Cell Size",
+       y = "Uniform Cell Shape")
+```
+
+```{r}
+#| error: false
+#| warning: false
+biopsy |>
+  ggplot(data =_) +
+  geom_boxplot(mapping = aes(x = uniform_cell_size,
+                          y = mitoses,
+                          fill = outcome)) +
+  scale_fill_manual(
+    values = c(malignant = "#D55E00", 
+               benign = "#0072B2")) +
+  labs(title = "Cell Shape against Rate of Mitosis",
+       subtitle = "Stratified by outcome",
+       fill = "Outcome",
+       x = "Uniform Cell Size",
+       y = "Mitoses")
+```
+
+```{r}
+#| error: false
+#| warning: false
 pca_fit <- biopsy |>
   select(where(is.numeric)) |> # retain only numeric columns
   scale() |> # scale data
@@ -74,7 +109,6 @@ pca_fit |>
        x = "PC1",
        y = "PC2",
        color = "Cancer")
-
 ```
 
 ```{r}
