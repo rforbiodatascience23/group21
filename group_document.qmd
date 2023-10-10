@@ -8,6 +8,13 @@ editor: visual
 
 #### Tobias (s215105)
 
+##### New feature
+
+```{r}
+data <- rnorm(10000, mean = 6, sd = sqrt(2))
+hist(data)
+```
+
 #### Othilia (s223163)
 
 #### Joanna (s215092)
