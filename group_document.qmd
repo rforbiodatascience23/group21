@@ -15,3 +15,14 @@ editor: visual
 #### Bunia (s215085)
 
 #### Emma (s215090)
+
+##### New analysis
+
+Here is a new analysis of x and y.
+
+```{r}
+x <- c(1,2,3,4,5)
+y <- c(10,20,30,40,50)
+
+plot(x,y)
+```
