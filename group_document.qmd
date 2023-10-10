@@ -10,6 +10,13 @@ editor: visual
 
 #### Othilia (s223163)
 
+##### New feature
+
+```{r}
+
+library(ggplot2)
+```
+
 #### Joanna (s215092)
 
 #### Bunia (s215085)
