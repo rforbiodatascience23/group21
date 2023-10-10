@@ -102,3 +102,7 @@ pca_fit |>
   theme_bw() +
   labs(title = "Variance explained by each PC")
 ```
+
+```{r}
+#Nyt felt
+```
