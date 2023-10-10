@@ -8,6 +8,20 @@ editor: visual
 
 #### Tobias (s215105)
 
+##### New feature
+
+```{r}
+#| include: false
+library("tidyverse")
+```
+
+```{r}
+rnorm(n = 10000,
+      mean = 6,
+      sd = sqrt(2)) |>
+  hist()
+```
+
 #### Othilia (s223163)
 
 ##### New feature
