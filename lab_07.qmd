@@ -88,3 +88,24 @@ pca_fit |>
   theme_bw() + 
   labs(title = "Rotation matrix of PC2 vs PC1")
 ```
+<<<<<<< HEAD
+=======
+
+```{r}
+pca_fit |>
+  tidy(matrix = "eigenvalues") |>
+  ggplot(aes(PC, percent)) +
+  geom_col(fill = "#0072B2", alpha = 0.8) +
+  scale_x_continuous(breaks = 1:9) +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    expand = expansion(mult = c(0, 0.01))
+  ) +
+  theme_bw() +
+  labs(title = "Variance explained by each PC")
+```
+
+```{r}
+#Nyt felt
+```
+>>>>>>> 52a026304f9f02b6b5c1548f0e0852f140a1d419
