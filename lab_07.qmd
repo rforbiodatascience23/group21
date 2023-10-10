@@ -5,3 +5,10 @@ format:
     embed-resources: true
 editor: visual
 ---
+
+# Libraries
+
+```{r}
+library("tidyverse")
+library("broom")
+```
