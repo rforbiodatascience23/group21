@@ -11,8 +11,15 @@ editor: visual
 ##### New feature
 
 ```{r}
-data <- rnorm(10000, mean = 6, sd = sqrt(2))
-hist(data)
+#| include: false
+library("tidyverse")
+```
+
+```{r}
+rnorm(n = 10000,
+      mean = 6,
+      sd = sqrt(2)) |>
+  hist()
 ```
 
 #### Othilia (s223163)
