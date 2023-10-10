@@ -6,7 +6,7 @@ format:
 editor: visual
 ---
 
-### Libraries
+### Load Libraries
 
 ```{r}
 library("tidyverse")
@@ -14,7 +14,7 @@ library("broom")
 library("patchwork")
 ```
 
-### Loading the data
+### Loading Data
 
 ```{r}
 #| error: false
