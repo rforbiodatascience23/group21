@@ -6,7 +6,7 @@ format:
 editor: visual
 ---
 
-## Load Libraries
+### Libraries
 
 ```{r}
 library("tidyverse")
@@ -14,7 +14,7 @@ library("broom")
 library("patchwork")
 ```
 
-## Load Data
+### Loading the data
 
 ```{r}
 #| error: false
@@ -42,6 +42,11 @@ pca_fit |>
     values = c(malignant = "#D55E00", 
                benign = "#0072B2")
   ) +
-  labs(xlab = "PC1",
-       ylab = "PC2")
+  theme_classic() +
+  labs(title = "PC2 vs PC1",
+       subtitle = "Stratified via outcome",
+       x = "PC1",
+       y = "PC2",
+       color = "Outcome")
+
 ```
