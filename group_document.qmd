@@ -29,4 +29,14 @@ This is my new analysis - whatever that means.
 
 #### Bunia (s215085)
 
+**New Feature:**
+
+I have to write something.
+
+```{r}
+print("Hello World")
+
+1+1
+```
+
 #### Emma (s215090)
