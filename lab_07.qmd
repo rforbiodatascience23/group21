@@ -125,6 +125,8 @@ pca_fit |>
        color = "Cancer")
 ```
 
+From the PCA, we're taking a closer look at the PC1 and PC2 values through a scatter plot. In order to truly interpret the effects of the variables on the cancer being benign or malignant, we also have to visualize the rotation matrix.
+
 #### Plotting a rotation matrix to determine the variance of the variables and the relationship between them.
 
 ```{r}
@@ -164,6 +166,8 @@ pca_fit |>
   labs(title = "Rotation Matrix of PC2 vs PC1")
 ```
 
+In conjunction with the scatter plot of PC2 vs. PC1, we can see that most of the variables move the system towards the left, where most of the cancers are malignant. This means that all of the variables have an effect on whether the cancer is malignant or benign. As it can be observed above, the mitoses variable has the largest influence.
+
 #### Showing the effect of each variable on the outcome.
 
 ```{r}
@@ -179,5 +183,7 @@ pca_fit |>
   theme_bw() +
   labs(title = "Variance Explained by Each PC")
 ```
+
+It can be observed that the first two PCs generated account for around 80% of the variance. Therefore, by plotting these two together, a graph representing the system's variables' influences well should be achieved.
 
 ## Conclusion
