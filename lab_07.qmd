@@ -42,7 +42,7 @@ pca_fit |>
     values = c(malignant = "#D55E00", 
                benign = "#0072B2")
   ) +
-  theme_classic() +
+  theme_bw()+
   labs(title = "PC2 vs PC1",
        subtitle = "Stratified via outcome",
        x = "PC1",
