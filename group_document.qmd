@@ -14,4 +14,14 @@ editor: visual
 
 #### Bunia (s215085)
 
+**New Feature:**
+
+I have to write something.
+
+```{r}
+print("Hello World")
+
+1+1
+```
+
 #### Emma (s215090)
