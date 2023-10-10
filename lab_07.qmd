@@ -74,7 +74,8 @@ pca_fit |>
   ggplot(aes(PC1, PC2)) +
   geom_segment(xend = 0,
                yend = 0,
-               arrow = arrow_style) +
+               arrow = arrow_style,
+               alpha = 0.5) +
   geom_text_repel(
     aes(label = column),
     hjust = 1, nudge_x = -0.02, 
@@ -86,18 +87,4 @@ pca_fit |>
   coord_fixed() + 
   theme_bw() + 
   labs(title = "Rotation matrix of PC2 vs PC1")
-```
-
-```{r}
-pca_fit|>
-  tidy(matrix = "eigenvalues") |>
-  ggplot(aes(PC, percent)) +
-  geom_col(fill = "#0072B2", alpha = 0.8) +
-  scale_x_continuous(breaks = 1:9) +
-  scale_y_continuous(
-    labels = scales::percent_format(),
-    expand = expansion(mult = c(0, 0.01))
-  ) +
-  theme_bw() +
-  labs(title = "Variance explained by each PC")
 ```
