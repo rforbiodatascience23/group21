@@ -1,7 +1,8 @@
 ---
-title: "Group document"
-format: 
-  html: 
+title: "Lab 6 Assignment: Group 21"
+author: "Bunia I.A. (s215085), Emma Q.A. (s215090), Joanna S.R. (s215092), Othilia F.S. (s223163) and Tobias A.C. (s215105)"
+format:
+  html:
     embed-resources: true
 editor: visual
 ---
@@ -42,13 +43,15 @@ biopsy |>
   scale_fill_manual(
     values = c(malignant = "#D55E00", 
                benign = "#0072B2")) +
-  labs(title = "Clumb Thickness of Patients",
+  labs(title = "Clump Thickness of Patients",
        subtitle = "Stratified by outcome",
        fill = "Outcome",
        x = "Clump Thickness",
        y = "n") +
   theme(legend.position = "")
 ```
+
+Generally, we observe a correlation between higher clump thickness and an increased likelihood of the clump being malignant. Furthermore, we see a higher count of benign cases suggesting that, based on the given criteria, benign cases are more prevalent than malignant cases.
 
 #### Exploring the relationship between uniform cell size and uniform cell shape in cancer patients.
 
