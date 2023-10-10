@@ -12,6 +12,14 @@ editor: visual
 
 #### Joanna (s215092)
 
+##### New Analysis
+
+This is my new analysis - whatever that means.
+
+```{r}
+100 + 345*0.75 - 20
+```
+
 #### Bunia (s215085)
 
 #### Emma (s215090)
