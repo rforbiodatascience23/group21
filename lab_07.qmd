@@ -18,7 +18,7 @@ for (pck in packages) {
 
 ## Aim
 
-This report aims to analyze biopsy data, using Principal Component Analysis (PCA) to reduce the dimensionality of the dataset. The data is derived from the MASS package, a breast cancer dataset assessing biopsies of breast tumours for 699 patients. Nine attributes were scored on a scale from 1 to 10. Whether the cancer was determined to be benign or malignant is also known.
+This report aims to analyze biopsy data, using Principal Component Analysis (PCA) to reduce the dimensionality of the dataset. The data is derived from the MASS package, a breast cancer dataset assessing biopsies of breast tumors for 699 patients. Nine attributes were scored on a scale from 1 to 10. Whether the tumor was determined to be benign or malignant is known.
 
 ## Load Data
 
@@ -30,7 +30,7 @@ biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 
 ## Data Analysis
 
-#### Exploring the relationship between clump thickness and cancer outcomes.
+#### Exploring the relationship between clump thickness and tumor outcomes.
 
 ```{r}
 #| error: false
@@ -38,20 +38,18 @@ biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 biopsy |>
   ggplot(data =_) +
   geom_bar(mapping = aes(x = clump_thickness,
-                          fill = outcome)) +
+                         fill = outcome)) +
   facet_wrap(~outcome) +
-  scale_fill_manual(
-    values = c(malignant = "#D55E00", 
-               benign = "#0072B2")) +
-  labs(title = "Clump Thickness of Patients",
+  scale_fill_manual(values = c(malignant = "#D55E00", 
+                               benign = "#0072B2")) +
+  labs(title = "Clump Thickness of Tumors",
        subtitle = "Stratified by outcome",
-       fill = "Outcome",
        x = "Clump Thickness",
        y = "n") +
   theme(legend.position = "")
 ```
 
-Generally, we observe a correlation between higher clump thickness and an increased likelihood of the clump being malignant. Furthermore, we see a higher count of benign cases suggesting that, based on the given criteria, benign cases are more prevalent than malignant cases.
+Generally, we observe a correlation between higher clump thickness and an increased likelihood of the tumor being malignant. Furthermore, we see a higher count of benign cases suggesting that, based on the given criteria, benign cases are more prevalent than malignant cases.
 
 #### Exploring the relationship between uniform cell size and uniform cell shape in cancer patients.
 
@@ -73,7 +71,7 @@ biopsy |>
        y = "Uniform Cell Shape")
 ```
 
-From the plot there is a noticeable division in both cell size and cell shape of the benign and malignant cells. A larger cluster of benign cells, with a few outliers, can be found at lower values of both cell size and shape, indicating that benign cell are generally more conserved in shape and size. On the contrary, the range of shape and size for malignant cells is much greater considering that we both observe malignant cells closer to the shape and size of benign cells and others almost four times that. This conjoins with our understanding of cancer cell types and that malignant have greater variation of both size and shape.
+From the plot there is a noticeable division in both cell size and cell shape of the benign and malignant tumors. A larger cluster of benign tumor samples, with a few outliers, can be found at lower values of both cell size and shape, indicating that the cells are generally more conserved in shape and size. On the contrary, the range of shape and size for malignant tumor samples are much greater considering that we both observe malignant tumors closer to the values of benign tumors and others almost four times those values. This conjoins with our understanding of cancer cells and that they have greater variation in both size and shape, than "normal" cells.
 
 #### Exploring the relationship between uniform cell size and rate of mitosis in cancer patients.
 
@@ -83,19 +81,19 @@ From the plot there is a noticeable division in both cell size and cell shape of
 biopsy |>
   ggplot(data =_) +
   geom_boxplot(mapping = aes(x = uniform_cell_size,
-                          y = mitoses,
-                          fill = outcome)) +
-  scale_fill_manual(
-    values = c(malignant = "#D55E00", 
-               benign = "#0072B2")) +
+                             y = mitoses,
+                             fill = outcome)) +
+  scale_fill_manual(values = c(malignant = "#D55E00", 
+                               benign = "#0072B2")) +
   labs(title = "Cell Shape against Rate of Mitosis",
        subtitle = "Stratified by outcome",
        fill = "Outcome",
        x = "Uniform Cell Size",
        y = "Mitoses")
+
 ```
 
-In our analysis, we noticed a notable disparity in the rate of mitosis between malignant and benign cancer cases. The malignant cases showcase a higher median and exhibit prominent outliers, indicating a heightened rate of mitosis. Additionally, the interquartile range for malignant cases is wider, illustrating a greater dispersion compared to benign cases. On the other hand, the boxplot for benign cancer displays more defined upper and lower boundaries, emphasizing a comparatively lower and tightly clustered mitosis rate.
+In our analysis, we noticed a notable disparity in the rate of mitosis between malignant and benign cancer cases. The malignant tumors showcase a greater interquartile range and exhibit prominent outliers, indicating a heightened rate of mitosis. Additionally, the interquartile range illustrates a greater dispersion compared to benign tumors. On the other hand, the boxplot for benign cancer displays more defined upper and lower boundaries, emphasizing a comparatively lower and tightly clustered mitosis rate.
 
 #### Conducting Principal Component Analysis (PCA) to determine the effect of each variable on the outcome.
 
@@ -131,7 +129,8 @@ From the PCA, we're taking a closer look at the PC1 and PC2 values through a sca
 
 ```{r}
 pca_fit |> 
-  tidy(matrix = "rotation")
+  tidy(matrix = "rotation") |>
+  head(10)
 ```
 
 ```{r}
@@ -151,15 +150,13 @@ pca_fit |>
   ggplot(aes(PC1, PC2)) +
   geom_segment(xend = 0,
                yend = 0,
-               arrow = arrow_style,
-               alpha = 0.5) +
-  geom_text_repel(
-    aes(label = column),
-    hjust = 1, nudge_x = -0.02, 
-    color = "#0072B2",
-    max.overlaps = 100,
-    size = 3
-  ) +
+               arrow = arrow_style) +
+  geom_label_repel(aes(label = column),
+             color = "#D55E00",
+             label.padding=0.25,
+             size = 2.5,
+             min.segment.length = 0.2,
+             alpha=0.9) +
   xlim(-1.25, .5) + 
   coord_fixed() + 
   theme_bw() + 
@@ -187,3 +184,5 @@ pca_fit |>
 It can be observed that the first two PCs generated account for around 80% of the variance. Therefore, by plotting these two together, a graph representing the system's variables' influences well should be achieved.
 
 ## Conclusion
+
+The way these biopsies are assessed, show promising results of differentiating between benign and malignant tumors, based on the chosen attributes. After analyzing different attributes, such as clump thickness or uniform cell size, it is possible to see correlations between the assessment values and the outcomes. From the principle component analysis and its various plots, it is seen that PC1 covers above 60% of the variation in the data, which is enough to give an indication as to whether the tumor is benign or malignant.
