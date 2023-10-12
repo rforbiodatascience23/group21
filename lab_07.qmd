@@ -75,6 +75,8 @@ From the plot there is a noticeable division in both cell size and cell shape of
 
 #### Exploring the relationship between uniform cell size and rate of mitosis in cancer patients.
 
+Instead of comparing all variables to each other in several plots, we can perform principal component analysis in order to describe the variation in outcome by fewer variables.
+
 ```{r}
 #| error: false
 #| warning: false
@@ -95,7 +97,7 @@ biopsy |>
 
 In our analysis, we noticed a notable disparity in the rate of mitosis between malignant and benign cancer cases. The malignant tumors showcase a greater interquartile range and exhibit prominent outliers, indicating a heightened rate of mitosis. Additionally, the interquartile range illustrates a greater dispersion compared to benign tumors. On the other hand, the boxplot for benign cancer displays more defined upper and lower boundaries, emphasizing a comparatively lower and tightly clustered mitosis rate.
 
-#### Conducting Principal Component Analysis (PCA) to determine the effect of each variable on the outcome.
+#### Showing the effect of each variable on the outcome.
 
 ```{r}
 #| error: false
@@ -105,6 +107,27 @@ pca_fit <- biopsy |>
   scale() |> # scale data
   prcomp() # do PCA
 
+
+pca_fit |>
+  tidy(matrix = "eigenvalues") |>
+  ggplot(aes(PC, percent)) +
+  geom_col(fill = "#0072B2", alpha = 0.8) +
+  scale_x_continuous(breaks = 1:9) +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    expand = expansion(mult = c(0, 0.01))
+  ) +
+  theme_bw() +
+  labs(title = "Variance Explained by Each PC")
+```
+
+It can be observed that the first two PCs generated account for around 75% of the variance. Therefore, by plotting these two together, a graph representing the system's variables' influences well should be achieved. Therefore we have chosen these two PC-variables to describe the system.
+
+#### Conducting Principal Component Analysis (PCA) to determine the effect of each variable on the outcome.
+
+```{r}
+#| error: false
+#| warning: false
 pca_fit |>
   augment(biopsy) |> # add original dataset back in
   ggplot(aes(x = .fittedPC1, 
@@ -123,7 +146,7 @@ pca_fit |>
        color = "Cancer")
 ```
 
-From the PCA, we're taking a closer look at the PC1 and PC2 values through a scatter plot. In order to truly interpret the effects of the variables on the cancer being benign or malignant, we also have to visualize the rotation matrix.
+From the PCA, we're taking a closer look at the PC1 and PC2 values through a scatter plot. There is a visible differentiation between the outcomes, when comparing the two PC-variables. In order to truly interpret the effects of the variables on the cancer being benign or malignant, we also have to visualize the rotation matrix.
 
 #### Plotting a rotation matrix to determine the variance of the variables and the relationship between them.
 
@@ -163,26 +186,8 @@ pca_fit |>
   labs(title = "Rotation Matrix of PC2 vs PC1")
 ```
 
-In conjunction with the scatter plot of PC2 vs. PC1, we can see that most of the variables move the system towards the left, where most of the cancers are malignant. This means that all of the variables have an effect on whether the cancer is malignant or benign. As it can be observed above, the mitoses variable has the largest influence.
-
-#### Showing the effect of each variable on the outcome.
-
-```{r}
-pca_fit |>
-  tidy(matrix = "eigenvalues") |>
-  ggplot(aes(PC, percent)) +
-  geom_col(fill = "#0072B2", alpha = 0.8) +
-  scale_x_continuous(breaks = 1:9) +
-  scale_y_continuous(
-    labels = scales::percent_format(),
-    expand = expansion(mult = c(0, 0.01))
-  ) +
-  theme_bw() +
-  labs(title = "Variance Explained by Each PC")
-```
-
-It can be observed that the first two PCs generated account for around 80% of the variance. Therefore, by plotting these two together, a graph representing the system's variables' influences well should be achieved.
+In conjunction with the scatter plot of PC2 vs. PC1, we can see that most of the variables move the system towards the left, where most of the cancers are malignant. This means that all of the variables have an effect on whether the cancer is malignant or benign. As it can be observed above, the mitoses variable has the largest influence in terms of PC2, whereas all variables seem to have an influence in terms of PC1.
 
 ## Conclusion
 
-The way these biopsies are assessed, show promising results of differentiating between benign and malignant tumors, based on the chosen attributes. After analyzing different attributes, such as clump thickness or uniform cell size, it is possible to see correlations between the assessment values and the outcomes. From the principle component analysis and its various plots, it is seen that PC1 covers above 60% of the variation in the data, which is enough to give an indication as to whether the tumor is benign or malignant.
+The way these biopsies are assessed, show promising results of differentiating between benign and malignant tumors, based on the chosen attributes. After analyzing different attributes, such as clump thickness or uniform cell size, it is possible to see correlations between the assessment values and the outcomes. From the principle component analysis and its various plots, it is seen that PC1 and PC2 cover above 70% of the variation in the data, which is enough to give an indication as to whether the tumor is benign or malignant.
