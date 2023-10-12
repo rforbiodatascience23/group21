@@ -1,5 +1,5 @@
 ---
-title: "Lab 6 Assignment: Group 21"
+title: "Lab 7 Assignment: Group 21"
 author: "Bunia I.A. (s215085), Emma Q.A. (s215090), Joanna S.R. (s215092), Othilia F.S. (s223163) and Tobias A.C. (s215105)"
 format:
   html:
