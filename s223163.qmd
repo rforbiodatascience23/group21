@@ -1,8 +1,0 @@
----
-title: "s223163.qmd"
-format: html
----
-
-```{r}
-
-```
